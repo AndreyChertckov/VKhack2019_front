@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Platform, SafeAreaView } from 'react-native';
 import SandBox from './src/components/SandBox';
 import Clock from './src/containers/Clock';
 import Action from './src/containers/Action';
@@ -13,10 +13,10 @@ const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 export default function App() {
   return (
     <Provider store={store}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Clock/>
         <Action/>
-      </View>
+      </SafeAreaView>
     </Provider>
   );
 }
@@ -24,8 +24,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#04346c',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    paddingTop: Platform.OS === 'android' ? 25 : 0
+  }
 });
