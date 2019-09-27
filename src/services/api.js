@@ -7,3 +7,22 @@ export async function getClock() {
         dailyMinus: -1,
     }
 }
+
+export async function getActions() {
+    return [
+        {
+            id: 1,
+            name: 'Test',
+            description: 'Test',
+            frequency: 11,
+            effect: +1
+        },
+        {
+            id: 2,
+            name: 'Test',
+            description: 'Test',
+            frequency: 11,
+            effect: -1
+        }
+    ]
+}

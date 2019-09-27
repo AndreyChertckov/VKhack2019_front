@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import SandBox from './src/components/SandBox';
 import Clock from './src/containers/Clock';
+import Action from './src/containers/Action';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -13,7 +14,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <Clock></Clock>
+        <Clock/>
+        <Action/>
       </View>
     </Provider>
   );

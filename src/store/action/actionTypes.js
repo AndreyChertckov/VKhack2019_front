@@ -1,0 +1,1 @@
+export const ACTIONS_FETCHED = 'action.ACTIONS_FETCHED'
