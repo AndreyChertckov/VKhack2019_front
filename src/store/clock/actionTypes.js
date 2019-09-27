@@ -1,0 +1,1 @@
+export const CLOCK_FETCHED = 'clock.fetched';

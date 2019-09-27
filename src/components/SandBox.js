@@ -1,7 +1,8 @@
 import React from 'react';
+import { Text } from 'react-native';
 
 export default function SandBox() {
     return (
-        <p>Sand Box</p>
+        <Text>Sand Box</Text>
     )
 }
