@@ -4,6 +4,7 @@ import SandBox from './src/components/SandBox';
 import Clock from './src/containers/Clock';
 import Action from './src/containers/Action';
 import Fact from './src/containers/Fact';
+import Logs from './src/containers/Logs';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -18,6 +19,7 @@ export default function App() {
         <Clock/>
         <Action/>
         <Fact/>
+        <Logs/>
       </View>
     </Provider>
   );

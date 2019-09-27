@@ -1,0 +1,1 @@
+export const LOGS_FETCHED = 'action_log.logs_fetched';
