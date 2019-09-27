@@ -3,8 +3,8 @@ import * as types from './actionTypes';
 
 initialState = Immutable({
     time: "00:00",
-    plusOverall: 0,
-    minusOverall: 0
+    dailyMinus: 0,
+    dailyPlus: 0
 })
 
 export default function reduce(state = initialState, action = {}) {
@@ -12,8 +12,8 @@ export default function reduce(state = initialState, action = {}) {
         case types.CLOCK_FETCHED:
             return state.merge({
                 time: action.time,
-                plusOverall: action.plusOverall,
-                minusOverall: action.minusOverall
+                dailyPlus: action.dailyPlus,
+                dailyMinus: action.dailyMinus
             })
         default:
             return state;
@@ -24,7 +24,7 @@ export default function reduce(state = initialState, action = {}) {
 export function getClock(state) {
     return {
         time: state.clock.time,
-        plusOverall: state.clock.plusOverall,
-        minusOverall: state.clock.minusOverall
+        dailyPlus: state.clock.dailyPlus,
+        dailyMinus: state.clock.dailyMinus
     }
 }
