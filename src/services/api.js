@@ -26,3 +26,10 @@ export async function getActions() {
         }
     ]
 }
+
+export async function getFact() {
+    return {
+        id: 1,
+        text: 'Test'
+    }
+}
