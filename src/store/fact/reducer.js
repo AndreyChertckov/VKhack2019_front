@@ -2,14 +2,16 @@ import Immutable from 'seamless-immutable';
 import * as types from './actionTypes';
 
 const initialState = Immutable({
-    actions: []
+    id: 0,
+    text: '',
 })
 
 export default function reduce(state = initialState, action = {}) {
     switch(action.type) {
-        case types.ACTIONS_FETCHED:
+        case types.FACT_FETCHED:
             return state.merge({
-                actions: action.actions
+                id: action.fact.id,
+                text: action.fact.text
             })
         default:
             return state;
@@ -17,8 +19,8 @@ export default function reduce(state = initialState, action = {}) {
 }
 
 
-export function getActions(state) {
+export function getFact(state) {
     return {
-        actions: state.action.actions
+        text: state.fact.text
     }
 }

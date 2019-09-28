@@ -1,0 +1,1 @@
+export const FACT_FETCHED = 'fact.fact_fetched';

@@ -1,7 +1,7 @@
 import Immutable from 'seamless-immutable';
 import * as types from './actionTypes';
 
-initialState = Immutable({
+const initialState = Immutable({
     time: "00:00",
     dailyMinus: 0,
     dailyPlus: 0

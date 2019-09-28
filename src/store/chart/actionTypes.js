@@ -1,0 +1,1 @@
+export const CHART_FETCHED = 'chart.chart_fetched';
