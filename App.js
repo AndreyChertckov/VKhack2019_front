@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream
-import React from 'react';
-import { StyleSheet, Text, View, Platform, SafeAreaView } from 'react-native';
-=======
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
->>>>>>> Stashed changes
+import { StyleSheet, Text, View, AsyncStorage, Platform, SafeAreaView } from 'react-native';
 import SandBox from './src/components/SandBox';
 import Clock from './src/containers/Clock';
 import Action from './src/containers/Action';
