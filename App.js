@@ -19,19 +19,8 @@ export default function App() {
   useEffect(() => {
     AsyncStorage.getItem('token').then((token) => {
       if (token == null) {
-        fetch('http://95.213.38.134:8080/api/user', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ name: 'Andrey Chertkov' })
-        }).then((resp) => {
-          return resp.json();
-        }).then((json) => {
-          AsyncStorage.setItem('token', "" + json['id']);
-        });
+        setUserState('test');
       }
-      setUserState('use_app');
     });
   });
   return (
