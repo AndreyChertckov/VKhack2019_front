@@ -10,7 +10,7 @@ import LogsView from '../components/LogsView';
 function Logs(props) {
     useEffect(() => {
         props.dispatch(fetchLogs());
-    });
+    }, []);
 
     return (
         <LogsView {...props}/>

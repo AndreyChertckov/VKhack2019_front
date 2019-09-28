@@ -12,7 +12,7 @@ function Chart(props) {
 
     useEffect(() => {
         props.dispatch(fetchChart(type));
-    });
+    }, []);
 
     return (
         <ChartView typeSetter={setType} {...props}/>

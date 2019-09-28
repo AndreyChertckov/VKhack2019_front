@@ -3,7 +3,7 @@ import * as types from './actionTypes';
 
 const initialState = Immutable({
     id: 0,
-    text: '',
+    description: '',
 })
 
 export default function reduce(state = initialState, action = {}) {
@@ -11,7 +11,7 @@ export default function reduce(state = initialState, action = {}) {
         case types.FACT_FETCHED:
             return state.merge({
                 id: action.fact.id,
-                text: action.fact.text
+                description: action.fact.description
             })
         default:
             return state;
@@ -21,6 +21,6 @@ export default function reduce(state = initialState, action = {}) {
 
 export function getFact(state) {
     return {
-        text: state.fact.text
+        description: state.fact.description
     }
 }

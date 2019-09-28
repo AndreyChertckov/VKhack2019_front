@@ -10,7 +10,7 @@ import ActionView from '../components/ActionView';
 function Action(props) {
     useEffect(() => {
         props.dispatch(fetchActions())
-    });
+    }, []);
 
     return (
         <ActionView {...props}/>

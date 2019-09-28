@@ -8,7 +8,6 @@ export function fetchChart(type='weekly') {
             const chart_data = await api.getChart(type);
             let chart = {};
             chart[type] = chart_data;
-            console.log(chart);
             dispatch({type: actionTypes.CHART_FETCHED, chart});
         } catch(error) {
             console.log(error)

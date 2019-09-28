@@ -10,7 +10,7 @@ function Clock(props){
 
     useEffect(() => {
         props.dispatch(clockActions.fetchClock());
-    });
+    }, []);
 
     return (
         <ClockView {...props}/>

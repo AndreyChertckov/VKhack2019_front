@@ -11,7 +11,7 @@ import FactView from '../components/FactView';
 function Fact(props) {
     useEffect(() => {
         props.dispatch(fetchFact())
-    });
+    }, []);
 
     return (
         <FactView {...props}/>
