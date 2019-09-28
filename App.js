@@ -15,14 +15,14 @@ import * as reducers from './src/store/reducers';
 const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 
 export default function App() {
-  const [userState, setUserState] = useState('use_app');
+  const [userState, setUserState] = useState('test');
   useEffect(() => {
     AsyncStorage.getItem('token').then((token) => {
-      if (token == null) {
-        setUserState('test');
+      if (token != null) {
+        setUserState('use_app');
       }
     });
-  });
+  }, []);
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.container}>
@@ -33,7 +33,7 @@ export default function App() {
           <Logs />
           <Chart />
         </View>) :
-          (<Test />)}
+          (<Test setUserState={setUserState} />)}
       </SafeAreaView>
     </Provider>
   );
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#04346c',
-    alignItems: 'center',
+    //alignItems: 'center',
     paddingTop: Platform.OS === 'android' ? 25 : 0
   }
 });
