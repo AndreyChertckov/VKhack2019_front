@@ -1,5 +1,5 @@
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
@@ -55,4 +55,82 @@ export async function getLogs() {
             }
         }
     ];
+}
+
+export async function getChart(type) {
+    await sleep(100);
+    switch (type) {
+        case 'weekly':
+            return {
+                timebounds: ['123', '125'],
+                overall: [
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                ]
+            }
+        case 'monthly':
+            return {
+                timebounds: ['123', '125'],
+                overall: [
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                    {
+                        day: '123',
+                        dailyPlus: '123',
+                        dailyMinus: '-123',
+                    },
+                ]
+            }
+    }
 }
