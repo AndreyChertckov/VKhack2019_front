@@ -5,6 +5,7 @@ function sleep(ms) {
 }
 
 async function getToken() {
+    await sleep(1000);
     let token = await AsyncStorage.getItem('token');
     if (token != null) {
         return token;
