@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {StyleSheet, Button} from 'react-native';
-import Svg, { Circle } from 'react-native-svg'
+import {StyleSheet, Button, Dimensions} from 'react-native';
+import Svg, { Circle, Rect } from 'react-native-svg'
 
 export default function ClockView(props) {
     const radius = "110",
@@ -38,11 +38,12 @@ export default function ClockView(props) {
         setNegStrokeDashoffset(circumference);
     }
 
+    const screenWidth = Math.round(Dimensions.get('window').width);
+
     return (
         <React.Fragment>
-            <Svg style={styles.rot} className="prefix__progress-ring" width="100%" height="50%" {...props}>
+            <Svg style={styles.rot} className="prefix__progress-ring" width={screenWidth} height={screenWidth} {...props}>
                 <Circle
-                    className="prefix__progress-ring__circle"
                     stroke="#00a876"
                     strokeDasharray={strokeDasharray}
                     strokeDashoffset={negStrokeDashoffset}
@@ -53,7 +54,6 @@ export default function ClockView(props) {
                     cy="50%"
                 />
                 <Circle
-                    className="prefix__progress-ring__circle"
                     stroke="#f83e5b"
                     strokeDasharray={strokeDasharray}
                     strokeDashoffset={posStrokeDashoffset}
@@ -63,10 +63,19 @@ export default function ClockView(props) {
                     cx="50%"
                     cy="50%"
                 />
+                <Rect
+                    transform={"rotate("+ posMins*6 +", " + (screenWidth/2) + ", " + (screenWidth/2) + ")"}
+                    fill="#fff"
+                    width="90"
+                    height="20"
+                    rx="15"
+                    x={screenWidth/2}
+                    y={screenWidth/2 - 10}
+                />
             </Svg>
-            {/* <Button onPress={() => addProgress(5)} title="ADD" />
+            <Button onPress={() => addProgress(5)} title="ADD" />
             <Button onPress={() => removeProgress(5)} title="REMOVE" />
-            <Button onPress={() => resetProgress()} title="RESET" /> */}
+            <Button onPress={() => resetProgress()} title="RESET" />
         </React.Fragment>
     )
 }
