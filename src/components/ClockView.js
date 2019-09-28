@@ -34,13 +34,21 @@ export default function ClockView(props) {
     }
 
     function removeProgress(mins) {
-        if (posMins > bottomLimit) {
-            if (negMins >= hourLimit && posMins <= negMins - 60) {
+        if (posMins > 0)
+            if (posMins > bottomLimit) {
+                if (negMins >= hourLimit && posMins <= negMins - 60) {
+                    setClockFaceRotation((+clockFaceRotation.slice(0, -3) - mins*6) + "deg");
+                } else
+                    setOffsetNegative(offsetNegative + mins/60*circumference);
+                setPosMins(posMins - mins);
+            } else {
                 setClockFaceRotation((+clockFaceRotation.slice(0, -3) - mins*6) + "deg");
-            } else
-                setOffsetNegative(offsetNegative + mins/60*circumference);
-            setPosMins(posMins - mins);
-        }
+                if (posMins > negMins - 60)
+                    setOffsetPositive(offsetPositive - mins/60*circumference);
+                setPosMins(posMins - mins);
+                setBottomLimit(bottomLimit - mins);
+                setHourLimit(hourLimit - mins);
+            }
     }
     
     function reset() {
@@ -56,8 +64,8 @@ export default function ClockView(props) {
 
     function resetProgress() {
         setNegMins(posMins);
-        setBottomLimit(posMins);
         setTopLimit(topLimit + posMins);
+        setBottomLimit(posMins)
         setHourLimit(hourLimit + posMins);
         setClockFaceRotation((-90 + posMins*6) + "deg");
         setOffsetPositive(circumference);
@@ -151,5 +159,11 @@ export default function ClockView(props) {
 }
 
 const styles = StyleSheet.create({
-    
+    clockFace: {
+        shadowColor: '#fff',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.1,
+        shadowRadius: 12,
+        elevation: 20
+    }
 });
