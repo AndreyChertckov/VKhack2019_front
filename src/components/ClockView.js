@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {StyleSheet, Button, Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import Svg, { Circle, Rect } from 'react-native-svg'
 
 export default function ClockView(props) {
@@ -150,20 +150,6 @@ export default function ClockView(props) {
                     cy="50%"
                 />
             </Svg>
-            <Button onPress={() => addProgress(5)} title="ADD" />
-            <Button onPress={() => removeProgress(5)} title="REMOVE" />
-            <Button onPress={() => resetProgress()} title="RESET PROGRESS" />
-            <Button onPress={() => reset()} title="RESET" />
         </React.Fragment>
     )
 }
-
-const styles = StyleSheet.create({
-    clockFace: {
-        shadowColor: '#fff',
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0.1,
-        shadowRadius: 12,
-        elevation: 20
-    }
-});
