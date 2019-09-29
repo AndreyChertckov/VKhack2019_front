@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "stretch",
         paddingTop: 30,
-        paddingBottom: 30
+        paddingBottom: 30,
+        marginBottom: 30,
     },
     text: {
         color: "#fff",

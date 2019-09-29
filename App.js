@@ -29,8 +29,8 @@ export default function App() {
         <ScrollView>
           <Clock />
           <Fact />
-          <Logs />
-          <Chart />
+          {/* <Logs />
+          <Chart /> */}
         </ScrollView >) :
           (<Test setUserState={setUserState} />)}
         <Action />
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     backgroundColor: '#04346c',
-    paddingTop: Platform.OS === 'android' ? 25 : 0
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
+    paddingBottom: 105,
   }
 });
