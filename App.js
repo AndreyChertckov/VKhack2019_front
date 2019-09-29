@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, AsyncStorage, Platform, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage, Platform, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 import SandBox from './src/components/SandBox';
 import Clock from './src/containers/Clock';
 import Action from './src/containers/Action';
@@ -22,16 +22,15 @@ export default function App() {
 
   const mainView = (
     <View>
-      <Clock />
-      <Action />
-      <Fact />
-      <Logs />
-      <Chart />
+      <ScrollView>
+          <Clock />
+          <Fact />
+          {/* <Logs />
+          <Chart /> */}
+        </ScrollView >
+        <Action />
     </View>
   )
-
-  function goToTest() {
-  }
 
   useEffect(() => {
     AsyncStorage.removeItem('token').then(() => {
@@ -56,7 +55,7 @@ export default function App() {
   }, []);
   return (
     <Provider store={store}>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.body}>
         {currentView}
       </SafeAreaView>
     </Provider>
@@ -64,10 +63,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  body: {
     flex: 1,
     backgroundColor: '#04346c',
-    //alignItems: 'center',
-    paddingTop: Platform.OS === 'android' ? 25 : 0
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
+    paddingBottom: 105,
   }
 });
