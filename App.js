@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, AsyncStorage, Platform, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage, Platform, SafeAreaView, ScrollView } from 'react-native';
 import SandBox from './src/components/SandBox';
 import Clock from './src/containers/Clock';
 import Action from './src/containers/Action';
@@ -14,7 +14,7 @@ import * as reducers from './src/store/reducers';
 
 const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 
-export default function App() {
+export default function App() {  
   const [userState, setUserState] = useState('test');
   useEffect(() => {
     AsyncStorage.getItem('token').then((token) => {
@@ -25,14 +25,14 @@ export default function App() {
   }, []);
   return (
     <Provider store={store}>
-      <SafeAreaView style={styles.container}>
-        {(userState == 'use_app') ? (<View>
+      <SafeAreaView style={styles.body}>
+        {(userState == 'use_app') ? (<ScrollView>
           <Clock />
-          <Action />
+          {/* <Action /> */}
           <Fact />
           <Logs />
           <Chart />
-        </View>) :
+        </ScrollView>) :
           (<Test setUserState={setUserState} />)}
       </SafeAreaView>
     </Provider>
@@ -40,10 +40,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  body: {
     flex: 1,
     backgroundColor: '#04346c',
-    //alignItems: 'center',
     paddingTop: Platform.OS === 'android' ? 25 : 0
   }
 });
