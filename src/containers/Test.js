@@ -100,7 +100,7 @@ export default function Test(props) {
 				onPress={(selectedIndex) => setStress(selectedIndex)}
 			/>
 			<Button
-				title="Оправить"
+				title="Отправить"
 				onPress={submit}
 			/>
 		</ScrollView>

@@ -20,15 +20,16 @@ export default function App() {
   const [userToken, setUserToken] = useState(-1);
   const [currentView, setCurrentView] = useState(<Text>Loading</Text>);
 
-  const mainView = [
+  const mainView =
+    (<SafeAreaView style={styles.body}>
       <ScrollView>
           <Clock />
           <Fact />
           {/* <Logs />
           <Chart /> */}
-      </ScrollView >,
+      </ScrollView >
       <Action />
-    ]
+    </SafeAreaView>)
 
   useEffect(() => {
     AsyncStorage.removeItem('token').then(() => {
@@ -41,9 +42,16 @@ export default function App() {
           }).then((data) => {
             console.log(data)
             setCurrentView(
-              <SafeAreaView style={{ flex: 1 }}>
-                <Button title='Готово' onPress={() => {setCurrentView(<Test userToken={data['id']} goToMainView={() => {setCurrentView(mainView)}} />)}}/>
-                <WebView source={{ uri: 'https://oauth.vk.com/authorize?client_id=7151914&display=page&redirect_uri=http://insultclock.space:8080/api/user/default&scope=friends&response_type=token&v=5.101&state=' + data['id'] }} />
+              <SafeAreaView style={[styles.body, {paddingBottom: 0}]}>
+                <Button title='Готово' onPress={() => {
+                  setCurrentView(
+                    <SafeAreaView style={[styles.body, {paddingBottom: 0}]}>
+                    <Test userToken={data['id']} goToMainView={() => {setCurrentView(mainView)}} />
+                    </SafeAreaView>
+                  )}
+                }
+              />
+              <WebView source={{ uri: 'https://oauth.vk.com/authorize?client_id=7151914&display=page&redirect_uri=http://insultclock.space:8080/api/user/default&scope=friends&response_type=token&v=5.101&state=' + data['id'] }} />
               </SafeAreaView>
             );
           });
@@ -53,9 +61,7 @@ export default function App() {
   }, []);
   return (
     <Provider store={store}>
-      <SafeAreaView style={[styles.body, {paddingBottom: 0}]}>
         {currentView}
-      </SafeAreaView>
     </Provider>
   );
 }
