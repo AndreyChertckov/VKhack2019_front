@@ -20,17 +20,15 @@ export default function App() {
   const [userToken, setUserToken] = useState(-1);
   const [currentView, setCurrentView] = useState(<Text>Loading</Text>);
 
-  const mainView = (
-    <View>
+  const mainView = [
       <ScrollView>
           <Clock />
           <Fact />
           {/* <Logs />
           <Chart /> */}
-        </ScrollView >
-        <Action />
-    </View>
-  )
+      </ScrollView >,
+      <Action />
+    ]
 
   useEffect(() => {
     AsyncStorage.removeItem('token').then(() => {
@@ -55,7 +53,7 @@ export default function App() {
   }, []);
   return (
     <Provider store={store}>
-      <SafeAreaView style={styles.body}>
+      <SafeAreaView style={[styles.body, {paddingBottom: 0}]}>
         {currentView}
       </SafeAreaView>
     </Provider>
