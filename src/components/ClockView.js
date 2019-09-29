@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {StyleSheet, Button, Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import Svg, { Circle, Rect } from 'react-native-svg'
 
 export default function ClockView(props) {
@@ -34,13 +34,21 @@ export default function ClockView(props) {
     }
 
     function removeProgress(mins) {
-        if (posMins > bottomLimit) {
-            if (negMins >= hourLimit && posMins <= negMins - 60) {
+        if (posMins > 0)
+            if (posMins > bottomLimit) {
+                if (negMins >= hourLimit && posMins <= negMins - 60) {
+                    setClockFaceRotation((+clockFaceRotation.slice(0, -3) - mins*6) + "deg");
+                } else
+                    setOffsetNegative(offsetNegative + mins/60*circumference);
+                setPosMins(posMins - mins);
+            } else {
                 setClockFaceRotation((+clockFaceRotation.slice(0, -3) - mins*6) + "deg");
-            } else
-                setOffsetNegative(offsetNegative + mins/60*circumference);
-            setPosMins(posMins - mins);
-        }
+                if (posMins > negMins - 60)
+                    setOffsetPositive(offsetPositive - mins/60*circumference);
+                setPosMins(posMins - mins);
+                setBottomLimit(bottomLimit - mins);
+                setHourLimit(hourLimit - mins);
+            }
     }
     
     function reset() {
@@ -56,8 +64,8 @@ export default function ClockView(props) {
 
     function resetProgress() {
         setNegMins(posMins);
-        setBottomLimit(posMins);
         setTopLimit(topLimit + posMins);
+        setBottomLimit(posMins)
         setHourLimit(hourLimit + posMins);
         setClockFaceRotation((-90 + posMins*6) + "deg");
         setOffsetPositive(circumference);
@@ -142,14 +150,6 @@ export default function ClockView(props) {
                     cy="50%"
                 />
             </Svg>
-            <Button onPress={() => addProgress(5)} title="ADD" />
-            <Button onPress={() => removeProgress(5)} title="REMOVE" />
-            <Button onPress={() => resetProgress()} title="RESET PROGRESS" />
-            <Button onPress={() => reset()} title="RESET" />
         </React.Fragment>
     )
 }
-
-const styles = StyleSheet.create({
-    
-});
