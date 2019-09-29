@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, AsyncStorage, Platform, SafeAreaView, ScrollView } from 'react-native';
-import SandBox from './src/components/SandBox';
+import { StyleSheet, AsyncStorage, Platform, SafeAreaView, ScrollView } from 'react-native';
 import Clock from './src/containers/Clock';
 import Action from './src/containers/Action';
 import Fact from './src/containers/Fact';
@@ -26,14 +25,15 @@ export default function App() {
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.body}>
-        {(userState == 'use_app') ? (<ScrollView>
+        {(userState == 'use_app') ? (
+        <ScrollView>
           <Clock />
-          {/* <Action /> */}
           <Fact />
           <Logs />
           <Chart />
-        </ScrollView>) :
+        </ScrollView >) :
           (<Test setUserState={setUserState} />)}
+        <Action />
       </SafeAreaView>
     </Provider>
   );
